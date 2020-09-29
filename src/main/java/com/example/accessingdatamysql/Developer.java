@@ -1,21 +1,23 @@
 package com.example.accessingdatamysql;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
-
 public class Developer {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Integer id;
 
-    private String name;
+    private String companyName;
 
     private String email;
+    @OneToMany(mappedBy = "dev")
+    private List<Games> games = new ArrayList<>();
+
 
     public Integer getId() {
         return id;
@@ -25,12 +27,21 @@ public class Developer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public List<Games> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Games> games) {
+        this.games = games;
     }
 
     public String getEmail() {

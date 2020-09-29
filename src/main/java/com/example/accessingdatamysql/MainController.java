@@ -12,11 +12,11 @@ public class MainController {
     @Autowired
     private DeveloperRepository developerRepository;
 
-    @PostMapping(path="/add")
+    @PostMapping(path="/addDeveloper")
     public @ResponseBody String addNewDeveloper (@RequestParam String name, @RequestParam String email) {
 
         Developer n = new Developer();
-        n.setName(name);
+        n.setCompanyName(name);
         n.setEmail(email);
         developerRepository.save(n);
         return "Saved";
