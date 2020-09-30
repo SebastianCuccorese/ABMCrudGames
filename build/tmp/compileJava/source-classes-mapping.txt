@@ -1,3 +1,7 @@
+com/example/accessingdatamysql/GamesRepository.java
+ com.example.accessingdatamysql.GamesRepository
+com/example/accessingdatamysql/Games.java
+ com.example.accessingdatamysql.Games
 com/example/accessingdatamysql/Developer.java
  com.example.accessingdatamysql.Developer
 com/example/accessingdatamysql/AccessingDataMySqlApplication.java
