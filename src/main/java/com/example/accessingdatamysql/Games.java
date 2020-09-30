@@ -20,14 +20,17 @@ public class Games {
     private Integer missionsAmount;
 
     @ManyToOne
-    @JoinColumn
-    private Developer dev;
+    private Company dev;
 
-    public Developer getDev() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Company getDev() {
         return dev;
     }
 
-    public void setDev(Developer dev) {
+    public void setDev(Company dev) {
         this.dev = dev;
     }
 

@@ -2,7 +2,5 @@ package com.example.accessingdatamysql;
 
 import org.springframework.data.repository.CrudRepository;
 
-
-public interface DeveloperRepository extends CrudRepository<Developer, Integer> {
-
+public interface PersonRepository extends CrudRepository<Person, Integer> {
 }

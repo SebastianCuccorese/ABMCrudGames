@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity
-public class Developer {
+public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -17,6 +17,8 @@ public class Developer {
     private String email;
     @OneToMany(mappedBy = "dev")
     private List<Games> games = new ArrayList<>();
+    @OneToMany(mappedBy = "company" )
+    private List<Person> person = new ArrayList<>();
 
 
     public Integer getId() {

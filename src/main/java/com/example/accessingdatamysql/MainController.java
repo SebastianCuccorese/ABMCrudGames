@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 
 public class MainController {
     @Autowired
-    private DeveloperRepository developerRepository;
+    private CompanyRepository companyRepository;
 
     @PostMapping(path="/addDeveloper")
     public @ResponseBody String addNewDeveloper (@RequestParam String name, @RequestParam String email) {
 
-        Developer n = new Developer();
+        Company n = new Company();
         n.setCompanyName(name);
         n.setEmail(email);
-        developerRepository.save(n);
+        companyRepository.save(n);
         return "Saved";
     }
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<Developer> getAllDevelopers() {
-        return developerRepository.findAll();
+    public @ResponseBody Iterable<Company> getAllDevelopers() {
+        return companyRepository.findAll();
     }
 }
