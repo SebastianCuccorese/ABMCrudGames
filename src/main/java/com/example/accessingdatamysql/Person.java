@@ -15,4 +15,35 @@ public class Person  {
     @ManyToOne
     private Company company;
 
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getCellphoneNro() {
+        return cellphoneNro;
+    }
+
+    public void setCellphoneNro(Integer cellphoneNro) {
+        this.cellphoneNro = cellphoneNro;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 }
