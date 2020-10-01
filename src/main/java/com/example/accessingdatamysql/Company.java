@@ -7,6 +7,10 @@ import java.util.List;
 
 @Entity
 public class Company {
+    public Company() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -55,3 +59,4 @@ public class Company {
     }
 
 }
+

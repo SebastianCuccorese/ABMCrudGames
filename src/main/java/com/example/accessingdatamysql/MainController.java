@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path="/demo")
 
 public class MainController {
-    @Autowired
     private CompanyRepository companyRepository;
 
-    @PostMapping(path="/addDeveloper")
+    @PostMapping(path="/Company")
     public @ResponseBody String addNewDeveloper (@RequestParam String name, @RequestParam String email) {
 
         Company n = new Company();
