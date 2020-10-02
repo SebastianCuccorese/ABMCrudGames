@@ -82,7 +82,7 @@ public class MainController {
     }
     @GetMapping(path = "/personsByNameAndSurname")
     public @ResponseBody Iterable<Person> personsByNameAndSurname(String name, String surname) {
-        return personRepository.findByNameAnAndSurname(name, surname);
+        return personRepository.findByNameAndSurname(name, surname);
     }
     @GetMapping(path = "/personsByCompanyName")
     public @ResponseBody Iterable<Person> personaByCompanyName(String companyName) {

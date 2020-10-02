@@ -8,8 +8,8 @@ import java.util.List;
 
 
 public interface CompanyRepository extends CrudRepository<Company, Integer> {
-    @Query("SELECT m FROM Company m WHERE m.companyName LIKE %:title%")
-    List<Company> searchByNameLike(@Param("name") String name);
+    //@Query("SELECT m FROM Company m WHERE m.companyName LIKE %:title%")
+    //List<Company> searchByNameLike(@Param("name") String name);
 
     List<Company> findByCompanyName(String name);
 
