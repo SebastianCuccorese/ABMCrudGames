@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface GamesRepository extends CrudRepository<Games, Integer> {
     List<Games> findByName(String name);
-    List<Games> findByDev_CompanyName(String companyName);
+    List<Games> findByDev_Name(String companyName);
 }
 

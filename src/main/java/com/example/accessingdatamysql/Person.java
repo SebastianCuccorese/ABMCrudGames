@@ -13,11 +13,17 @@ public class Person  {
     private String surname;
     private Integer cellphoneNro;
 
-    public Person() {
-    }
-
     @ManyToOne
     private Company company;
+
+    public Person() {}
+
+    public Person(String name, String surname, Integer cellphoneNro, Company company) {
+        this.name = name;
+        this.surname = surname;
+        this.cellphoneNro = cellphoneNro;
+        this.company = company;
+    }
 
     public Integer getId() {
         return Id;

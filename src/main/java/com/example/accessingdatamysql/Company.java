@@ -1,5 +1,7 @@
 package com.example.accessingdatamysql;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,24 +9,18 @@ import java.util.List;
 
 @Entity
 public class Company {
-    public Company() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Integer id;
-
-    private String companyName;
-
+    private String name;
     private String email;
     @OneToMany(mappedBy = "dev")
     private List<Games> gamesList = new ArrayList<>();
     @OneToMany(mappedBy = "company" )
     private List<Person> personList = new ArrayList<>();
 
-
+    public Company() {
+    }
     public Integer getId() {
         return id;
     }
@@ -33,13 +29,12 @@ public class Company {
         this.id = id;
     }
 
-
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Games> getGamesList() {

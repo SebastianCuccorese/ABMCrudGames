@@ -1,30 +1,26 @@
 package com.example.accessingdatamysql;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 
 @RequestMapping(path="/demo")
-
 public class MainController {
-    private CompanyRepository companyRepository;
-    private GamesRepository gamesRepository;
-    private PersonRepository personRepository;
+    @Autowired private CompanyRepository companyRepository;
+    @Autowired private GamesRepository gamesRepository;
+    @Autowired private PersonRepository personRepository;
 
-    @PostMapping(path="/Company")
-    public @ResponseBody String Company (@RequestParam String name, @RequestParam String email, @RequestParam Games games, @RequestParam Person person) {
-
+    @PostMapping(path = "/company")
+    public @ResponseBody String company(@RequestBody String name) {
         Company n = new Company();
-        n.setCompanyName(name);
-        n.setEmail(email);
-        n.addGames(games);
-        n.addPerson(person);
+        n.setName(name);
         companyRepository.save(n);
         return "Saved";
     }
-    @PostMapping(path="/Game")
-    public @ResponseBody String Game (@RequestParam String name, @RequestParam String genre, @RequestParam double timeAmount, @RequestParam Integer missionAmount, @RequestParam Company dev) {
+    @PostMapping(path="/game")
+    public @ResponseBody String Game (@RequestBody String name, @RequestBody String genre, @RequestBody double timeAmount, @RequestBody Integer missionAmount, @RequestBody Company dev) {
         Games n = new Games();
         n.setName(name);
         n.setGenre(genre);
@@ -34,8 +30,8 @@ public class MainController {
         gamesRepository.save(n);
         return "saved";
     }
-    @PostMapping(path = "/Person")
-    public @ResponseBody String Person(@RequestParam String name, @RequestParam String surname, @RequestParam Integer cellphone, @RequestParam Company company) {
+    @PostMapping(path = "/person")
+    public @ResponseBody String Person(@RequestBody String name, @RequestBody String surname, @RequestBody Integer cellphone, @RequestBody Company company) {
         Person n = new Person();
         n.setName(name);
         n.setSurname(surname);
@@ -45,47 +41,47 @@ public class MainController {
         return "saved";
     }
 
-    @GetMapping(path="/allCompany")
+    @GetMapping(path="/allcompany")
     public @ResponseBody Iterable<Company> allCompany() {
         return companyRepository.findAll();
     }
 
-    @GetMapping(path = "/CompanyByName")
+    @GetMapping(path = "/companybyname")
     public @ResponseBody Iterable<Company> CompanyByName(@RequestParam String name) {
-       return companyRepository.findByCompanyName(name);
+       return companyRepository.findByName(name);
     }
 
-   @GetMapping(path = "/allGames")
+   @GetMapping(path = "/allgames")
     public @ResponseBody Iterable<Games> allGames() {
         return gamesRepository.findAll();
    }
 
-   @GetMapping(path = "/gamesByName")
+   @GetMapping(path = "/gamesbyname")
     public @ResponseBody Iterable<Games> gamesByName(@RequestParam String name) {
         return gamesRepository.findByName(name);
    }
-   @GetMapping(path = "/gamesByDev")
+   @GetMapping(path = "/gamesbydev")
     public @ResponseBody Iterable<Games> gamesByDev(@RequestParam String dev_Name) {
-        return gamesRepository.findByDev_CompanyName(dev_Name);
+        return gamesRepository.findByDev_Name(dev_Name);
    }
-    @GetMapping(path = "/allPersons")
+    @GetMapping(path = "/allpersons")
     public @ResponseBody Iterable<Person> allPersons() {
        return personRepository.findAll();
    }
-    @GetMapping(path = "/personsByName")
+    @GetMapping(path = "/personsbyName")
     public @ResponseBody Iterable<Person> personsByName(String name) {
         return personRepository.findByName(name);
     }
-    @GetMapping(path = "/personsBySurname")
+    @GetMapping(path = "/personsbySurname")
     public @ResponseBody Iterable<Person> personsBySurname(String surname) {
         return personRepository.findBySurname(surname);
     }
-    @GetMapping(path = "/personsByNameAndSurname")
+    @GetMapping(path = "/personsbynameandsurname")
     public @ResponseBody Iterable<Person> personsByNameAndSurname(String name, String surname) {
         return personRepository.findByNameAndSurname(name, surname);
     }
-    @GetMapping(path = "/personsByCompanyName")
+    @GetMapping(path = "/personsbycompanyname")
     public @ResponseBody Iterable<Person> personaByCompanyName(String companyName) {
-        return personRepository.findByCompany_CompanyName(companyName);
+        return personRepository.findByCompany_Name(companyName);
     }
 }
