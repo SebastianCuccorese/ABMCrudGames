@@ -20,9 +20,9 @@ public class Company {
 
     private String email;
     @OneToMany(mappedBy = "dev")
-    private List<Games> games = new ArrayList<>();
+    private List<Games> gamesList = new ArrayList<>();
     @OneToMany(mappedBy = "company" )
-    private List<Person> person = new ArrayList<>();
+    private List<Person> personList = new ArrayList<>();
 
 
     public Integer getId() {
@@ -42,12 +42,12 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public List<Games> getGames() {
-        return games;
+    public List<Games> getGamesList() {
+        return gamesList;
     }
 
-    public void setGames(List<Games> games) {
-        this.games = games;
+    public void addGames(Games games) {
+        gamesList.add(games);
     }
 
     public String getEmail() {
@@ -58,5 +58,11 @@ public class Company {
         this.email = email;
     }
 
+    public List<Person> getPerson() {
+        return personList;
+    }
+    public void addPerson(Person person) {
+        personList.add(person);
+    }
 }
 

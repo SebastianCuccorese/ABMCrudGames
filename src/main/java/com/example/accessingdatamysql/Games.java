@@ -13,14 +13,17 @@ public class Games {
 
     private String name;
 
-    private String gender;
+    private String genre;
 
-    private Time hoursAmount;
+    private double hoursAmount;
 
     private Integer missionsAmount;
 
     @ManyToOne
     private Company dev;
+
+    public Games() {
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -46,19 +49,19 @@ public class Games {
         this.name = name;
     }
 
-    public String getGender() {
-        return gender;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public Time getHoursAmount() {
+    public double getHoursAmount() {
         return hoursAmount;
     }
 
-    public void setHoursAmount(Time hoursAmount) {
+    public void setHoursAmount(double hoursAmount) {
         this.hoursAmount = hoursAmount;
     }
 
