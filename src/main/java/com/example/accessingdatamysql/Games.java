@@ -1,6 +1,8 @@
 package com.example.accessingdatamysql;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Time;
 
@@ -20,6 +22,8 @@ public class Games {
     private Integer missionsAmount;
 
     @ManyToOne
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    @JoinColumn(name = "dev_id")
     private Company dev;
 
     public Games() {

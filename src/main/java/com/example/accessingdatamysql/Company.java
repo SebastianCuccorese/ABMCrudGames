@@ -1,10 +1,13 @@
 package com.example.accessingdatamysql;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -15,9 +18,12 @@ public class Company {
     private String name;
     private String email;
     @OneToMany(mappedBy = "dev")
-    private List<Games> gamesList = new ArrayList<>();
-    @OneToMany(mappedBy = "company" )
-    private List<Person> personList = new ArrayList<>();
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Set<Games> gamesList;
+    @OneToMany(mappedBy = "company")
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Set<Person> personList;
+
 
     public Company() {
     }
@@ -37,8 +43,16 @@ public class Company {
         this.name = name;
     }
 
-    public List<Games> getGamesList() {
+    public Set<Games> getGamesList() {
         return gamesList;
+    }
+
+    public void setGamesList(Set<Games> gamesList) {
+        this.gamesList = gamesList;
+    }
+
+    public void setPersonList(Set<Person> personList) {
+        this.personList = personList;
     }
 
     public void addGames(Games games) {
@@ -53,7 +67,7 @@ public class Company {
         this.email = email;
     }
 
-    public List<Person> getPerson() {
+    public Set<Person> getPerson() {
         return personList;
     }
     public void addPerson(Person person) {

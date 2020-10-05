@@ -8,36 +8,29 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(path="/demo")
 public class MainController {
-    @Autowired private CompanyRepository companyRepository;
-    @Autowired private GamesRepository gamesRepository;
-    @Autowired private PersonRepository personRepository;
+    private final CompanyRepository companyRepository;
+    private final GamesRepository gamesRepository;
+    private final PersonRepository personRepository;
+
+    public MainController(CompanyRepository companyRepository, GamesRepository gamesRepository, PersonRepository personRepository) {
+        this.companyRepository = companyRepository;
+        this.gamesRepository = gamesRepository;
+        this.personRepository = personRepository;
+    }
 
     @PostMapping(path = "/company")
-    public @ResponseBody String company(@RequestBody String name) {
-        Company n = new Company();
-        n.setName(name);
-        companyRepository.save(n);
+    public @ResponseBody String company(@RequestBody Company company) {
+        companyRepository.save(company);
         return "Saved";
     }
     @PostMapping(path="/game")
-    public @ResponseBody String Game (@RequestBody String name, @RequestBody String genre, @RequestBody double timeAmount, @RequestBody Integer missionAmount, @RequestBody Company dev) {
-        Games n = new Games();
-        n.setName(name);
-        n.setGenre(genre);
-        n.setHoursAmount(timeAmount);
-        n.setMissionsAmount(missionAmount);
-        n.setDev(dev);
-        gamesRepository.save(n);
+    public @ResponseBody String Game (@RequestBody Games games) {
+        gamesRepository.save(games);
         return "saved";
     }
     @PostMapping(path = "/person")
-    public @ResponseBody String Person(@RequestBody String name, @RequestBody String surname, @RequestBody Integer cellphone, @RequestBody Company company) {
-        Person n = new Person();
-        n.setName(name);
-        n.setSurname(surname);
-        n.setCellphoneNro(cellphone);
-        n.setCompany(company);
-        personRepository.save(n);
+    public @ResponseBody String Person(@RequestBody Person person) {
+        personRepository.save(person);
         return "saved";
     }
 
